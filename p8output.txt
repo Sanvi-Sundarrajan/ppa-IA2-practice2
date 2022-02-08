@@ -1,1 +1,161 @@
+gcc -g p8original.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0xb1b: file p8original.c, line 84.
+(gdb) r
+Starting program: /home/runner/ppa-IA2-practice2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p8original.c:84
+84  {
+(gdb) n
+86      n= input_n();
+(gdb) s
+input_n () at p8original.c:32
+32  {
+(gdb) n
+34    printf("Enter the n value \n");
+(gdb) n
+Enter the n value 
+35    scanf("%d",&n);
+(gdb) n
+2
+36    return n;
+(gdb) n
+37  }
+(gdb) p n
+$1 = 2
+(gdb) n
+main () at p8original.c:87
+87      Triangle t[n],smallest;
+(gdb) s
+88      input_n_triangles(n,t);
+(gdb) s
+input_n_triangles (n=2, t=0x7ffee5b72e80) at p8original.c:48
+48    for (i=0;i<n;i++)
+(gdb) n
+49      t[i]=input_triangle();
+(gdb) n
+Enter base and altitude of triangle 
+1 2
+48    for (i=0;i<n;i++)
+(gdb) p t[0]
+$2 = {base = 1, altitude = 2, area = 0}
+(gdb) n
+49      t[i]=input_triangle();
+(gdb) s
+input_triangle () at p8original.c:39
+39  {
+(gdb) n
+41    printf ("Enter base and altitude of triangle \n");
+(gdb) n
+Enter base and altitude of triangle 
+42    scanf ("%f%f", &t.base, &t.altitude);
+(gdb) n
+2 3
+43    return t;
+(gdb) n
+44  }
+(gdb) p t[1]
+Structure has no component named operator[].
+(gdb) p t
+$3 = {base = 2, altitude = 3, area = 0}
+(gdb) n
+input_n_triangles (n=2, t=0x7ffee5b72e80) at p8original.c:48
+48    for (i=0;i<n;i++)
+(gdb) n
+50  }
+(gdb) n
+main () at p8original.c:89
+89      find_areas_n(n,t);
+(gdb) s
+find_areas_n (n=2, t=0x7ffee5b72e80) at p8original.c:58
+58    for(i=0;i<n;i++)
+(gdb) n
+59    find_area(&t[i]);
+(gdb) n
+58    for(i=0;i<n;i++)
+(gdb) p t[0].area
+$4 = 1
+(gdb) n
+59    find_area(&t[i]);
+(gdb) n
+58    for(i=0;i<n;i++)
+(gdb) p t[1].area
+$5 = 3
+(gdb) n
+60  }
+(gdb) n
+main () at p8original.c:90
+90      smallest=find_smallest_triangle(n,t);
+(gdb) s
+find_smallest_triangle (n=2, t=0x7ffee5b72e80) at p8original.c:65
+65    Smallest.area = t[0].area;
+(gdb) n
+66    for(i=0; i<n; i++)
+(gdb) n
+67      if(Smallest.area >=t[i].area)
+(gdb) n
+69          Smallest.area=t[i].area;
+(gdb) n
+70          Smallest.base=t[i].base;
+(gdb) n
+71          Smallest.altitude=t[i].altitude;
+(gdb) n
+66    for(i=0; i<n; i++)
+(gdb) p Smalleat
+No symbol "Smalleat" in current context.
+(gdb) p Smallest
+$6 = {base = 1, altitude = 2, area = 1}
+(gdb) n
+67      if(Smallest.area >=t[i].area)
+(gdb) n
+66    for(i=0; i<n; i++)
+(gdb) n
+74      return Smallest;
+(gdb) n
+75  }
+(gdb) p Smallest 
+$7 = {base = 1, altitude = 2, area = 1}
+(gdb) n
+main () at p8original.c:91
+91      output(n,t, smallest);
+(gdb) s
+output (n=2, t=0x7ffee5b72e80, smallest=...) at p8original.c:79
+79      for (i=0;i<n;i++)
+(gdb) n
+80      printf("Triangle with base and altitude %f,%f of area is of %f \n",t[i].base,t[i].altitude,t[i].area);
+(gdb) n
+Triangle with base and altitude 1.000000,2.000000 of area is of 1.000000 
+79      for (i=0;i<n;i++)
+(gdb) n
+80      printf("Triangle with base and altitude %f,%f of area is of %f \n",t[i].base,t[i].altitude,t[i].area);
+(gdb) n
+Triangle with base and altitude 2.000000,3.000000 of area is of 3.000000 
+79      for (i=0;i<n;i++)
+(gdb) n
+81      printf("The smallest triangle is the triangle with %f base and %f altitude ",smallest.base,smallest.altitude);
+(gdb) n
+82  }
+(gdb) n
+main () at p8original.c:92
+92  return 0;
+(gdb) c
+Continuing.
+The smallest triangle is the triangle with 1.000000 base and 2.000000 altitude [Inferior 1 (process 31) exited normally]
+(gdb) 
