@@ -44,7 +44,7 @@ int gcd(int a, int b)
 }
 void output(int a, int b, int gcd_result)
 {
-  printf("The GCD of %d and %d is %d",a,b,gcd_result);
+  printf("The GCD of %d and %d is %d\n",a,b,gcd_result);
 }
 int main()
 {
