@@ -9,16 +9,13 @@ output:
 20
 */
 #include <stdio.h>
-#include<stdio.h>
-int
-input_array_size()
+int input_array_size()
 {
   int n;
   printf ("Enter the array size \n");
   scanf ("%d", &n);
   return n;
 }
-
 void input_array (int n, int a[n])
 {
   int i;
@@ -26,32 +23,31 @@ void input_array (int n, int a[n])
   for (i = 0; i < n; i++)
   scanf("%d",&a[i]);
 }
-
-int
-sum_composite_numbers (int n, int a[n])
+int is_composite(int n)
 {
-  int count = 0, f = 1,composite;
-  while (f <= n)
+ int count=0, f=1;
+  while(f<=n)
     {
-      if (n % f == 0)
-	count++;
-      f++;
+      if(n%f==0)
+        count++;
+        f++;
     }
-  if (count > 2)
-    {
-     composite=
-    }
-  return sum;
+  if (count>2)
+  return 1;
 }
-
-void
-output (int sum)
+int sum_composite_numbers (int n, int a[n])
 {
-  printf ("Sum=%d", sum);
+  int i,sum=0;
+    for(i=0;i<n;i++)
+    if (is_composite(a[i])==1)
+    sum+=a[i];
+    return sum;
 }
-
-int
-main ()
+void output (int sum)
+{
+  printf ("Sum=%d\n", sum);
+}
+int main ()
 {
   int n = input_array_size ();
   int a[n];
