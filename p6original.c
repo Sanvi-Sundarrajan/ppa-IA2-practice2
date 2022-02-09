@@ -7,42 +7,38 @@ hello
 output:
 olleh*/
 #include <stdio.h>
-void input_string(char *a)
+void input_string (char *str)
 {
-  printf("Enter the string \n");
-  scanf("%s",a);
+  printf (" Enter the string: ");
+  scanf ("%s", str);
 }
-int length(char *a)
+int length (char *str)
 {
-  int count =0;
-  while(a[count]!=0)
+  int count = 0;
+  while (str[count] != 0)
     count++;
   return count;
 }
-void str_reverse(char *a)
-{ 
-    char reversea;
-    int i,j;
-    j = length(a) - 1;
-    while (i < j)
+void revstr (char *str1)
+{
+  int i, len, temp;
+  len = length (str1);
+  for (i = 0; i < len / 2; i++)
     {
-      reversea = a[i];
-      a[i] = a[j];
-      a[j] = reversea;
-      i++;
-      j--;
-   }
-   
+      temp = str1[i];
+      str1[i] = str1[len - i - 1];
+      str1[len - i - 1] = temp;
+    }
 }
-void output(char *a,char *reversea)
+void output (char *str1)
 {
-  printf("The reversed string is %s",a);
+  printf (" After reversing the string: %s", str1);
 }
-int main()
+int main ()
 {
-char a[100],reversea;
-input_string(a);
-str_reverse(a);
-output(a,reversea);
-return 0;
+  char str[50];
+  input_string (str);
+  revstr (str);
+  output (str);
+  return 0;
 }

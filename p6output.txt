@@ -1,2 +1,124 @@
-// Code not working 
-// Working on errors
+gcc -g p6original.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x83e: file p6original.c, line 38.
+(gdb) r
+Starting program: /home/runner/ppa-IA2-practice2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p6original.c:38
+38  {
+(gdb) n
+40    input_string (str);
+(gdb) s
+input_string (str=0x7ffda20145e0 "\001") at p6original.c:12
+12    printf (" Enter the string: ");
+(gdb) n
+13    scanf ("%s", str);
+(gdb) n
+ Enter the string: hello
+14  }
+(gdb) p str
+$1 = 0x7ffda20145e0 "hello"
+(gdb) p *str
+$2 = 104 'h'
+(gdb) n
+main () at p6original.c:41
+41    revstr (str);
+(gdb) s
+revstr (str1=0x7ffda20145e0 "hello") at p6original.c:25
+25    len = length (str1);
+(gdb) s
+length (str=0x7ffda20145e0 "hello") at p6original.c:17
+17    int count = 0;
+(gdb) n
+18    while (str[count] != 0)
+(gdb) n
+19      count++;
+(gdb) n
+18    while (str[count] != 0)
+(gdb) p count
+$3 = 1
+(gdb) n
+19      count++;
+(gdb) n
+18    while (str[count] != 0)
+(gdb) p count
+$4 = 2
+(gdb) n
+19      count++;
+(gdb) n
+18    while (str[count] != 0)
+(gdb) p count
+$5 = 3
+(gdb) n
+19      count++;
+(gdb) n
+18    while (str[count] != 0)
+(gdb) p count
+$6 = 4
+(gdb) n
+19      count++;
+(gdb) n
+18    while (str[count] != 0)
+(gdb) p count
+$7 = 5
+(gdb) n
+20    return count;
+(gdb) n
+21  }
+(gdb) n
+revstr (str1=0x7ffda20145e0 "hello") at p6original.c:26
+26    for (i = 0; i < len / 2; i++)
+(gdb) n
+28        temp = str1[i];
+(gdb) n
+29        str1[i] = str1[len - i - 1];
+(gdb) n
+30        str1[len - i - 1] = temp;
+(gdb) n
+26    for (i = 0; i < len / 2; i++)
+(gdb) p str1
+$8 = 0x7ffda20145e0 "oellh"
+(gdb) n
+28        temp = str1[i];
+(gdb) n
+29        str1[i] = str1[len - i - 1];
+(gdb) n
+30        str1[len - i - 1] = temp;
+(gdb) n
+26    for (i = 0; i < len / 2; i++)
+(gdb) p str1
+$9 = 0x7ffda20145e0 "olleh"
+(gdb) n
+32  }
+(gdb) n
+main () at p6original.c:42
+42    output (str);
+(gdb) s
+output (str1=0x7ffda20145e0 "olleh") at p6original.c:35
+35    printf (" After reversing the string: %s", str1);
+(gdb) n
+36  }
+(gdb) n
+main () at p6original.c:43
+43    return 0;
+(gdb) c
+Continuing.
+ After reversing the string: olleh[Inferior 1 (process 61) exited normally]
+(gdb) 
