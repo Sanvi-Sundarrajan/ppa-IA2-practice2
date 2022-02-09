@@ -1,1 +1,389 @@
+gcc -g p7original.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x877: file p7original.c, line 35.
+(gdb) r
+Starting program: /home/runner/ppa-IA2-practice2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p7original.c:35
+35  {
+(gdb) n
+37  t=input_triangle();
+(gdb) s
+input_triangle () at p7original.c:20
+20  {
+(gdb) n
+22    printf ("Enter base and altitude of triangle \n");
+(gdb) n
+Enter base and altitude of triangle 
+23    scanf ("%f%f", &t.base, &t.altitude);
+ 
+ gcc -g p3original.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x7e0: file p3original.c, line 39.
+(gdb) r
+Starting program: /home/runner/ppa-IA2-practice2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p3original.c:39
+39  int n=input_number();
+(gdb) s
+input_number () at p3original.c:13
+13  {
+(gdb) n
+15    printf("Enter the number\n");
+(gdb) n
+Enter the number
+16    scanf("%d",&n);
+(gdb) n
+8
+17    return n;
+(gdb) n
+18  }
+(gdb) p n
+$1 = 8
+(gdb) n
+main () at p3original.c:40
+40  int composite= is_composite(n);
+(gdb) s
+is_composite (n=8) at p3original.c:21
+21   int count=0, f=1;
+(gdb) n
+22    while(f<=n)
+(gdb) n
+24        if(n%f==0)
+(gdb) n
+25          count++;
+(gdb) n
+26          f++;
+(gdb) n
+22    while(f<=n)
+(gdb) p count
+$2 = 1
+(gdb) n
+24        if(n%f==0)
+(gdb) n
+25          count++;
+(gdb) n
+26          f++;
+(gdb) n
+22    while(f<=n)
+(gdb) p count
+$3 = 2
+(gdb) n
+24        if(n%f==0)
+(gdb) n
+26          f++;
+(gdb) n
+22    while(f<=n)
+(gdb) n
+24        if(n%f==0)
+(gdb) n
+25          count++;
+(gdb) n
+26          f++;
+(gdb) n
+22    while(f<=n)
+(gdb) p count
+$4 = 3
+(gdb) n
+24        if(n%f==0)
+(gdb) n
+26          f++;
+(gdb) n
+22    while(f<=n)
+(gdb) p count
+$5 = 3
+(gdb) n
+24        if(n%f==0)
+(gdb) n
+26          f++;
+(gdb) n
+22    while(f<=n)
+(gdb) n
+24        if(n%f==0)
+(gdb) n
+26          f++;
+(gdb) n
+22    while(f<=n)
+(gdb) p count
+$6 = 3
+(gdb) n
+24        if(n%f==0)
+(gdb) n
+25          count++;
+(gdb) n
+26          f++;
+(gdb) n
+22    while(f<=n)
+(gdb) 
+n28   return count;
+(gdb) nn
+Undefined command: "nn".  Try "help".
+(gdb) n
+29  }
+(gdb) n
+main () at p3original.c:41
+41  output(n,composite);
+(gdb) s
+output (n=8, composite=4) at p3original.c:32
+32    if(composite>2)
+(gdb) n
+33      printf("the number is a Composite\n");
+(gdb) n
+the number is a Composite
+36  }
+(gdb) n
+main () at p3original.c:42
+42  te);
+(gdb) n
+43  rn 0;
+(gdb) n
+__libc_start_main (main=0x563ee4e007d8 <main>, argc=1, argv=0x7ffec822e478, 
+    init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
+    stack_end=0x7ffec822e468) at ../csu/libc-start.c:344
+344 ../csu/libc-star
+ 
+ gcc p3original.c
+p3original.c: In function ‘is_composite’:
+p3original.c:21:6: error: ‘n’ redeclared as different kind of symbol
+  int n, count=0, f=1;
+      ^
+p3original.c:19:22: note: previous definition of ‘n’ was here
+ int is_composite(in
+ 
+ gcc -g p3original.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b iamain
+Breakpoint 1 at 0x7e0: file p3original.c, line 39.
+(gdb) r
+Starting program: /home/runner/ppa-IA2-practice2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p3original.c:39
+39  int n=input_number();
+(gdb) s
+input_number () at p3original.c:13
+13  {
+(gdb) n
+15    printf("Enter the number\n");
+(gdb) n
+Enter the number
+16    scanf("%d",&n);
+(gdb) n
+8
+17    return n;
+(gdb) n
+18  }
+(gdb) p n
+$1 = 8
+(gdb) n
+main () at p3original.c:40
+40  int composite= is_composite(n);
+(gdb) s
+is_composite (n=8) at p3original.c:21
+21   int count=0, f=1;
+(gdb) n
+22    while(f<=n)
+(gdb) n
+24        if(n%f==0)
+(gdb) n
+25          count++;
+(gdb) n
+26          f++;
+(gdb) n
+22    while(f<=n)
+(gdb) p count
+$2 = 1
+(gdb) n
+24        if(n%f==0)
+(gdb) n
+25          count++;
+(gdb) n
+26          f++;
+(gdb) n
+22    while(f<=n)
+(gdb) p count
+$3 = 2
+(gdb) n
+24        if(n%f==0)
+(gdb) n
+26          f++;
+(gdb) n
+22    while(f<=n)
+(gdb) n
+24        if(n%f==0)
+(gdb) n
+25          count++;
+(gdb) n
+26          f++;
+(gdb) n
+22    while(f<=n)
+(gdb) p count
+$4 = 3
+(gdb) n
+24        if(n%f==0)
+(gdb) n
+26          f++;
+(gdb) n
+22    while(f<=n)
+(gdb) p count
+$5 = 3
+(gdb) n
+24        if(n%f==0)
+(gdb) n
+26          f++;
+(gdb) n
+22    while(f<=n)
+(gdb) n
+24        if(n%f==0)
+(gdb) n
+26          f++;
+(gdb) n
+22    while(f<=n)
+(gdb) p count
+$6 = 3
+(gdb) n
+24        if(n%f==0)
+(gdb) n
+ 
+ gcc -g p5original.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x859: file p5original.c, line 33.
+(gdb) r
+Starting program: /home/runner/ppa-IA2-practice2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p5original.c:33
+33    a=input_number();
+(gdb) s
+input_number () at p5original.c:7
+7   {
+(gdb) n
+9     printf("Enter the number\n");
+(gdb) n
+Enter the number
+10    scanf("%d",&n);
+(gdb) n
+12
+11    return n;
+(gdb) p n
+$1 = 12
+(gdb) n
+12  }
+(gdb) n
+main () at p5original.c:34
+34    b=input_number();
+(gdb) s
+input_number () at p5original.c:7
+7   {
+(gdb) n
+9     printf("Enter the number\n");
+(gdb) n
+Enter the number
+10    scanf("%d",&n);
+(gdb) n
+16
+11    return n;
+(gdb) n
+12  }
+(gdb) p n
+$2 = 16
+(gdb) n
+main () at p5original.c:35
+35    gcd_result=gcd(a,b);
+(gdb) s
+gcd (a=12, b=16) at p5original.c:15
+15      if (a == 0)
+(gdb) n
+17      else if (b == 0)
+(gdb) n
+19      else if (a == b)
+(gdb) n
+21      else if (a > b)
+(gdb) n
+24          return gcd(a, b-a);
+(gdb) n
+25  }
+(gdb) p gcd
+$3 = {int (int, int)} 0x55daae2007be <gcd>
+(gdb) p gcd_result
+No symbol "gcd_result" in current context.
+(gdb) n
+main () at p5original.c:36
+36    output(a,b,gcd_result);
+(gdb) s
+output (a=12, b=16, gcd_result=4) at p5original.c:28
+28    printf("The GCD of %d and %d is %d",a,b,gcd_result);
+(gdb) n
+29  }
+(gdb) n
+main () at p5original.c:37
+37    return 0;
+(gdb) c
+Continuing.
+The GCD of 12 and 16 is 4[Inferior 1 (process 82) exited normally]
+(gdb) 

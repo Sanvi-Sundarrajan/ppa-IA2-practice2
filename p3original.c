@@ -30,7 +30,7 @@ int is_composite(int n)
 void output(int n, int composite)
 {
   if(composite>2)
-    printf("The number %d is a Composite\n");
+    printf("The number %d is a Composite\n",n);
   else
     printf("The number is not Composite\n") ;
 }
