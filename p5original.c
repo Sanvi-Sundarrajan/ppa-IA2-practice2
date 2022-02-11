@@ -10,37 +10,15 @@ int input_number()
   scanf("%d",&n);
   return n;
 }
-int is_composite(int n)
-{
- int count=0, f=1;
-  while(f<=n)
-    {
-      if(n%f==0)
-        count++;
-        f++;
-    }
-  return count;
-}
-
 int gcd(int a, int b)
 {
-  if(is_composite(a) > 2 && is_composite(b) > 2 )
+  while(b!=0)
   {
-    if (a == 0)
-      return b;
-    else if (b == 0)
-      return a;
-    else if (a == b)
-      return a;
-    else if (a > b)
-      return gcd(a-b, b);
-    else    
-      return gcd(a, b-a);
+    gcd=a%b;
+    a=b;
+    b=gcd;
   }
-  else
-  {
-    return 1;
-  }
+  return gcd;
 }
 void output(int a, int b, int gcd_result)
 {
